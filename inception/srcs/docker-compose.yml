@@ -1,0 +1,56 @@
+version: '3.1'
+
+volumes:
+  mariadb:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aschaefe/data/mariadb
+  wordpress:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aschaefe/data/wordpress
+
+services:
+  nginx:
+    container_name: nginx
+    build: requirements/nginx
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart:  unless-stopped
+    networks:
+     - network
+    depends_on:
+      - wordpress
+
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart:  unless-stopped
+    networks:
+      - network
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+
+  mariadb:
+    build:
+      context: requirements/mariadb
+    container_name: mariadb
+    volumes:
+     - mariadb:/var/lib/mysql
+    env_file:
+      - .env
+    restart:  unless-stopped
+    networks:
+      - network
+
+networks:
+  network:
+

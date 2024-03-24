@@ -1,0 +1,70 @@
+/*
+Theme Name: My Theme
+Theme URI: http://example.com/my-theme/
+Author: Fif
+Author URI: http://example.com
+Description: A simple WordPress theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-theme
+*/
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    background-color: #007bff;
+}
+
+.wrapper {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #50a3a2;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #eaeaea 1px solid;
+}
+
+header h1 {
+    text-align: center;
+    margin: 0;
+}
+
+nav {
+    background: #444;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 18px;
+}
+
+article {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #444;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}

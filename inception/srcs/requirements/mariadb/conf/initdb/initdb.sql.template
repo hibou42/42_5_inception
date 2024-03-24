@@ -1,0 +1,24 @@
+-- Check if the 'mariadb' database exists, and create it if it doesn't
+CREATE DATABASE IF NOT EXISTS ${SQL_DB};
+
+CREATE USER IF NOT EXISTS '${SQL_USER}'@'localhost' IDENTIFIED BY '${SQL_PWD}';
+
+GRANT ALL PRIVILEGES ON ${SQL_DB}.* TO '${SQL_USER}'@'%' IDENTIFIED BY '${SQL_PWD}';
+
+FLUSH PRIVILEGES;
+-- Select the 'mariadb' database for subsequent operations
+USE ${SQL_DB};
+
+-- Drop the table if it already exists, and create it anew
+DROP TABLE IF EXISTS posts;
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    published_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert some sample posts
+INSERT INTO posts (title, content) VALUES ('First Post', 'This is the content of the first post.');
+INSERT INTO posts (title, content) VALUES ('Second Post', 'This is the content of the second post.');
+INSERT INTO posts (title, content) VALUES ('Third Post', 'This is the content of the third post.');
