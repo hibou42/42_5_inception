@@ -18,6 +18,9 @@ build:
 start:
 		${DOCK} up -d
 
+stop:
+		${DOCK} down
+
 clean:
 		${DOCK} down --volumes --rmi all
 
